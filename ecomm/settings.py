@@ -176,6 +176,7 @@ ALLOWED_HOSTS=[
     '*'
 ]
 CORS_ALLOWED_ORIGINS = [
+    'https://shopruv.vercel.app',
     'http://localhost:3000',
     'https://shopruv.onrender.com',
 
