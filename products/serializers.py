@@ -76,6 +76,9 @@ class ProductSerializer(serializers.ModelSerializer):
                 
         #     available_size.append(size)
         validated_data['created_by_id'] = self.context['request'].user 
+        if len(User.objects.filter(username=validated_data['created_by_id']))==0:
+            raise ValidationError('User not authenticated')
+        
         user=User.objects.filter(username=validated_data['created_by_id'])[0]
         try:
             product=Product.objects.create(brand=brand,name=validated_data['name'],
